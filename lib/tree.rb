@@ -107,28 +107,34 @@ require_relative 'node.rb'
       end
     end
 
-    def sort
-      sorted_movies = Hash.new
-      # until sorted_movies.keys.count == @number_of_nodes
-        if @head.left_link == nil
-          sorted_movies[@head.title] = @head.score
-    #     elsif sorted_movies.values.include?(@head.left_link.score)
-    #       @head = @head.right_link
-        else
-          @head = @head.left_link
-          sort
-        end
-      # end
-      sorted_movies
-    end
+    # def sort
+    #   sorted_movies = Hash.new
+    #   # until sorted_movies.keys.count == @number_of_nodes
+    #     if @head.left_link == nil
+    #       sorted_movies[@head.title] = @head.score
+    # #     elsif sorted_movies.values.include?(@head.left_link.score)
+    # #       @head = @head.right_link
+    #     else
+    #       @head = @head.left_link
+    #       sort
+    #     end
+    #   # end
+    #   sorted_movies
+    # end
 
     def load(text_file)
+
       file = File.read("#{text_file}")
       movie_list = []
       file.each_line {|line|
-          movie_list << line}
+          movie_list << (line.chomp.split(", "))}
 
-      number_of_movies_loaded = movie_list.count
+      compare_movie_list = Hash.new
+      movie_list.each do |score_title_pair|
+        compare_movie_list[score_title_pair[1]] = score_title_pair[0]
+      end
+
+      number_of_movies_loaded = compare_movie_list.values.count
     end
 
   end

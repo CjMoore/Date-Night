@@ -266,7 +266,7 @@ class TreeTest < Minitest::Test
   #   tree = Tree.new
   #   head = tree.insert(40, "Ever After")
   #   node_2 = tree.insert(100, "The Warriors")
-  # 
+  #
   #   sorted_movies = Hash.new
   #   sorted_movies[head.title] = head.score
   #
@@ -295,13 +295,14 @@ class TreeTest < Minitest::Test
 
   # def test_load_makes_array_with_correct_number_of_elements
   #   tree = Tree.new
+  #   movie_list = Array.new
   #   (tree.load("text.txt")).each_line {|line|
-  #       movie_list.push(line)}
+  #       movie_list.push(line.chomp.split(","))}
   #
   #   assert_equal 99, movie_list.count
   # end
 
-  def test_load_returns_number_of_movies_inputted
+  def test_load_returns_number_of_movies_inputted_ignoring_repeats
     tree = Tree.new
     number_of_movies_loaded = tree.load("text.txt")
 
