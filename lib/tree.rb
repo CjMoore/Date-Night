@@ -113,6 +113,7 @@ require_relative 'node.rb'
     #       sorted_movies[@head.title] = @head.score
     # #     elsif sorted_movies.values.include?(@head.left_link.score)
     # #       @head = @head.right_link
+            # sort
     #     else
     #       @head = @head.left_link
     #       sort
@@ -143,7 +144,7 @@ require_relative 'node.rb'
                             @number_of_nodes,
                           ((@number_of_nodes/@number_of_nodes) * 100))
       else
-        
+
       end
     end
   end
