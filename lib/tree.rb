@@ -10,7 +10,6 @@ require_relative 'node.rb'
       @head = nil
       @depth = 0
       @number_of_nodes = 0
-      # @sorted_movies = {}
     end
 
     def insert(score, title)
@@ -137,4 +136,14 @@ require_relative 'node.rb'
       number_of_movies_loaded = compare_movie_list.values.count
     end
 
+    def health(depth)
+      health_meters = Array.new
+      if 0 == depth
+        health_meters.push(@head.score,
+                            @number_of_nodes,
+                          ((@number_of_nodes/@number_of_nodes) * 100))
+      else
+        
+      end
+    end
   end

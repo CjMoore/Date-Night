@@ -293,15 +293,6 @@ class TreeTest < Minitest::Test
     refute_equal nil, file
   end
 
-  # def test_load_makes_array_with_correct_number_of_elements
-  #   tree = Tree.new
-  #   movie_list = Array.new
-  #   (tree.load("text.txt")).each_line {|line|
-  #       movie_list.push(line.chomp.split(","))}
-  #
-  #   assert_equal 99, movie_list.count
-  # end
-
   def test_load_returns_number_of_movies_inputted_ignoring_repeats
     tree = Tree.new
     number_of_movies_loaded = tree.load("text.txt")
@@ -309,20 +300,12 @@ class TreeTest < Minitest::Test
     assert_equal 99, number_of_movies_loaded
   end
 
-  # def test_load_splits_each_title_score_pair_into_seperate_arrays
-  #   skip
-  #   tree = Tree.new
-  #   file = tree.load("text.txt")
-  #
-  #   movie_list = []
-  #   file.each_line {|line|
-  #       movie_list.push(line)}
-  #
-  #   movie_list.each do |score_title_pair|
-  #     score_title_pair.split(", ")
-  #   end
-    # binding.pry
+  def test_health_at_head
+    tree = Tree.new
+    head = tree.insert(95, "Star Wars")
+    node_3 = tree.insert(40, "Ever After")
+    node_4 = tree.insert(100, "The Warriors")
 
-  # end
-
+    assert_equal [95, 3, 100], tree.health(0)
+  end
 end
