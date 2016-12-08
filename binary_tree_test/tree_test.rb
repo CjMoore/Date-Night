@@ -252,6 +252,41 @@ class TreeTest < Minitest::Test
     assert_equal min_hash, tree.min
   end
 
+  # def test_sort_has_correct_number_of_nodes
+  #   tree = Tree.new
+  #   head = tree.insert(60, "Zoolander")
+  #   node_2 = tree.insert(40, "Ever After")
+  #   node_3 = tree.insert(100, "The Warriors")
+  #   node_4 = tree.insert(30, "Bad Movie")
+  #
+  #   assert_equal 4, tree.sort
+  # end
+
+  # def test_sort_can_sort_head_node_if_head_has_lowest_score
+  #   tree = Tree.new
+  #   head = tree.insert(40, "Ever After")
+  #   node_2 = tree.insert(100, "The Warriors")
+  # 
+  #   sorted_movies = Hash.new
+  #   sorted_movies[head.title] = head.score
+  #
+  #   assert_equal sorted_movies, tree.sort
+  # end
+  # #
+  # def test_sort_moved_down_left_nodes
+  #   tree = Tree.new
+  #   head = tree.insert(95, "Star Wars")
+  #   node_2 = tree.insert(60, "Zoolander")
+  #   node_3 = tree.insert(40, "Ever After")
+  #   binding.pry
+  #
+  #   sorted_movies = Hash.new
+  #   sorted_movies = {"Ever After"=>40, "Zoolander"=>60,
+  #                       "Star Wars"=>95}
+  #
+  #   assert_equal sorted_movies, tree.sort
+  # end
+
   def test_load_loads_file
     tree = Tree.new
     file = tree.load("text.txt")

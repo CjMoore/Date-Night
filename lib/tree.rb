@@ -10,15 +10,18 @@ require_relative 'node.rb'
       @head = nil
       @depth = 0
       @number_of_nodes = 0
+      # @sorted_movies = {}
     end
 
     def insert(score, title)
 
       if @head == nil
+        @number_of_nodes += 1
         @head = Node.new(score, title)
       else
 
         if score < @head.score && @head.left_link == nil
+          @number_of_nodes += 1
           next_node = Node.new(score, title)
           if @head.right_link == nil
             @depth += 1
@@ -27,6 +30,7 @@ require_relative 'node.rb'
           @head.left_link = next_node
 
         elsif score > @head.score && @head.right_link == nil
+          @number_of_nodes += 1
           next_node = Node.new(score, title)
           if @head.left_link == nil
             @depth += 1
@@ -38,7 +42,6 @@ require_relative 'node.rb'
           if score < @head.score
             @head = @head.left_link
             insert(score, title)
-
           elsif score > @head.score
             @head = @head.right_link
             insert(score, title)
@@ -78,9 +81,7 @@ require_relative 'node.rb'
           @head = @head.right_link
           depth_of(score)
         end
-
       end
-
     end
 
 
@@ -107,9 +108,18 @@ require_relative 'node.rb'
     end
 
     def sort
-
-
-
+      sorted_movies = Hash.new
+      # until sorted_movies.keys.count == @number_of_nodes
+        if @head.left_link == nil
+          sorted_movies[@head.title] = @head.score
+    #     elsif sorted_movies.values.include?(@head.left_link.score)
+    #       @head = @head.right_link
+        else
+          @head = @head.left_link
+          sort
+        end
+      # end
+      sorted_movies
     end
 
     def load(text_file)
